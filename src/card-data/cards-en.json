@@ -4,7 +4,7 @@
         "front": "sjanse-CardFront.jpg",
         "back": "chance-CardBack.jpg",
         "cards": [{
-                "title": "Trouble",
+                "title": "Friend in Trouble",
                 "text": "Somebody important to this character faces trouble because of the element you own – severe illness, bankruptcy, doubt in their faith or similar."
             },
             {
@@ -12,11 +12,11 @@
                 "text": "This character does something rash that causes them a lot of trouble with the element you own. An unwise sexual liaison; insulting an ally; destruction of property."
             },
             {
-                "title": "Map Area Danger",
+                "title": "Danger to Map Area",
                 "text": "An area on the map is threatened. An attack by enemies, a natural disaster, a change from within or similar."
             },
             {
-                "title": "Old Friend?",
+                "title": "Old Friend",
                 "text": "Someone from this character’s past suddenly appears in an area on the map, with a request or demand.."
             },
             {

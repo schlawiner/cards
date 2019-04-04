@@ -1,110 +1,114 @@
 @import 'trig.scss';
-
 $break-small: 200px;
 $break-large: 800px;
-
 @mixin breakpoint($size) {
-  @if $size == S {
-    @media (max-width: $break-small), (max-height: $break-small) { @content; }
-  }
-
-  @else if $size == M {
-    @media (min-width: $break-small), (min-height: $break-small) { @content; }
-  }
-
-  @else if $size == L {
-    @media (min-width: $break-large), (min-height: $break-large) { @content; }
-  }
-
-  @else {
-    @warn "Breakpoint mixin supports: S|M|L";
-  }
-}
-
-html { overflow: hidden;
-  user-select: none;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-.App {
-  background: #eee;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-
-}
-.LanguageMenu {
-  display: flex;
-  flex-direction: column;
-  nav {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    .Option{
-      padding: 1em;
-      cursor: pointer;
-      &.active {
-        font-weight: bold;
-      }
-      &:hover {
-        background-color: #ddd;
-      }
+    @if $size==S {
+        @media (max-width: $break-small), (max-height: $break-small) {
+            @content;
+        }
     }
-  }
+    @else if $size==M {
+        @media (min-width: $break-small), (min-height: $break-small) {
+            @content;
+        }
+    }
+    @else if $size==L {
+        @media (min-width: $break-large), (min-height: $break-large) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Breakpoint mixin supports: S|M|L";
+    }
+}
+
+html {
+    overflow: hidden;
+    user-select: none;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.App {
+    background: #eee;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.LanguageMenu {
+    display: flex;
+    flex-direction: column;
+    nav {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        .Option {
+            padding: 1em;
+            cursor: pointer;
+            &.active {
+                font-weight: bold;
+            }
+            &:hover {
+                background-color: #ddd;
+            }
+        }
+    }
 }
 
 .AppMenu {
-  transition-property: font-size;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-  display: flex;
-  justify-content: center;
-  font-size: 10vw; // Fallbac
-  font-size: 10vmin;
-  @include breakpoint(L) {
-    font-size: 2.5em;
-  }
-  height: 2em;
-  .MenuItem {
+    transition-property: font-size;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 1.5em;
-    width: 1.5em;
-    color: rgba(black, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    &:hover {
-      background: white;
-      color: black;
+    font-size: 10vw; // Fallbac
+    font-size: 10vmin;
+    @include breakpoint(L) {
+        font-size: 2.5em;
     }
-  }
+    height: 2em;
+    .MenuItem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 1.5em;
+        width: 1.5em;
+        color: rgba(black, 0.3);
+        border-radius: 50%;
+        cursor: pointer;
+        &:hover {
+            background: white;
+            color: black;
+        }
+    }
 }
 
 .MainPage {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .wrapper {
-    position: relative;
-  }
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .wrapper {
+        position: relative;
+    }
 }
 
 .Deck {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  pointer-events:none;
-  flex: 1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    flex: 1;
 }
+
 .reshuffle {
-  box-shadow: 0 0.2em 0.3em 0 rgba(0,0,0,0.3);
-  border-radius: 0.3em;
-  background: #ddd;
+    box-shadow: 0 0.2em 0.3em 0 rgba(0, 0, 0, 0.3);
+    border-radius: 0.3em;
+    background: #ddd;
 }
 
 $bounce: cubic-bezier(0.410, 0.000, 0.460, 1.425);
@@ -112,73 +116,85 @@ $bounceboth: cubic-bezier(0.325, -0.280, 0.655, 1.345);
 // $flipcurve: cubic-bezier(0.400, -0.250, 0.000, 1.135);
 // $flipcurve: cubic-bezier(1.000, -0.005, 0.495, 0.165);
 .Card {
-  height: 100%;
-  width: 100%;
-  z-index: 0;
-  transition-property: transform, box-shadow;
-  transition-duration: 400ms;
-  transition-timing-function: $bounceboth;
-  cursor: pointer;
-  perspective: 15em;
-  position: absolute;
-  .CardFront { transform: rotateY(180deg); }
-  .CardBack { transform:  rotateY(0); }
-  pointer-events:all;
-  @for $i from 0 through 49 {
-    &:nth-of-type(50n + #{$i}) {
-      transition-delay: 30ms * $i;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    transition-property: transform, box-shadow;
+    transition-duration: 400ms;
+    transition-timing-function: $bounceboth;
+    cursor: pointer;
+    perspective: 15em;
+    position: absolute;
+    .CardFront {
+        transform: rotateY(180deg);
     }
-  }
-  &.flip {
-    z-index: 100;
-    transition-delay: 0ms;
-    transition-duration: 700ms;
-    transition-timing-function: $bounce;
-    .CardFront { transform: rotateY(0); }
-    .CardBack { transform:  rotateY(-180deg); }
-    &:hover {
-      z-index: 200;
-      transform: scale(1) translate(0, 0) !important;
-      .CardFront, .CardBack{
-        box-shadow: 0 0.1em 2em -0.5em rgba(0,0,0,0.5);
-      }
+    .CardBack {
+        transform: rotateY(0);
     }
-  }
+    pointer-events:all;
+    @for $i from 0 through 49 {
+        &:nth-of-type(50n + #{$i}) {
+            transition-delay: 30ms * $i;
+        }
+    }
+    &.flip {
+        z-index: 100;
+        transition-delay: 0ms;
+        transition-duration: 700ms;
+        transition-timing-function: $bounce;
+        .CardFront {
+            transform: rotateY(0);
+        }
+        .CardBack {
+            transform: rotateY(-180deg);
+        }
+        &:hover {
+            z-index: 200;
+            transform: scale(1) translate(0, 0) !important;
+            .CardFront,
+            .CardBack {
+                box-shadow: 0 0.1em 2em -0.5em rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
 }
+
 .discarded {
-  pointer-events: none;
-  z-index: 300;
-  transition-delay: 0ms !important;
-  @for $i from 0 through 20 {
-    &:nth-of-type(20n + #{$i}) {
-      transform: rotateZ(783deg*$i) translate(200vw * sin(2*$i), 200vh * cos(2*$i)) !important;
+    pointer-events: none;
+    z-index: 300;
+    transition-delay: 0ms !important;
+    @for $i from 0 through 20 {
+        &:nth-of-type(20n + #{$i}) {
+            transform: rotateZ(783deg*$i) translate(200vw * sin(2*$i), 200vh * cos(2*$i)) !important;
+        }
     }
-  }
 }
 
 .card-content {
-  font-size: 0.36em;
-  line-height: 1.2em;
-  padding: 3em;
-  .card-title {
-    font-size: 1.5em;
-    margin: 0 0 0.4em 0;
-    padding: 0;
-  }
+    font-size: 0.36em;
+    line-height: 1.2em;
+    padding: 5em 3em;
+    .card-title {
+        font-size: 1.5em;
+        margin: 0 0 0.4em 0;
+        padding: 0;
+    }
 }
-.CardBack, .CardFront {
-  transition: inherit;
-  transition-delay: 100ms;
-  transition-duration: 500ms;
-  transition-timing-function: ease-in-out;
-  box-shadow: 0 0 0 0 rgba(0,0,0,0);
-  border-radius: 0.3em;
-  width: inherit;
-  height: inherit;
-  position: absolute;
-  background-size: cover;
-  background-position: center;
-  transform-origin: 45% 50%;
-  backface-visibility: hidden;
-  background-color: white;
+
+.CardBack,
+.CardFront {
+    transition: inherit;
+    transition-delay: 100ms;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in-out;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    border-radius: 0.3em;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    transform-origin: 45% 50%;
+    backface-visibility: hidden;
+    background-color: white;
 }
