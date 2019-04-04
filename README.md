@@ -5,6 +5,9 @@ Fork of Haaken Lid's Itras By Card app for digital use of the cards for the Tabl
 - draw Fate cards (once per player per session)
 - draw Resolution cards (anytime someone says "This may not be quite so easy!" when you try to do a thing)
 
+## Try them!
+Here: https://archipelago-desktop.surge.sh
+
 
 ### Author's original comments
 
